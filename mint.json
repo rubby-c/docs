@@ -7,12 +7,12 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#2463eb",
+    "light": "#60a5fa",
+    "dark": "#2463eb",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#2463eb",
+      "to": "#60a5fa"
     }
   },
   "topbarLinks": [
@@ -33,14 +33,9 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Home",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "discord",
-      "url": "https://mintlify.com/community"
+      "url": "https://afficone.com"
     },
     {
       "name": "Blog",
