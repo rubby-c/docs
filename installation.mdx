@@ -4,11 +4,11 @@ description: 'Get started with integrating Afficone into your website'
 icon: 'wrench'
 ---
 
-## Adding a script tag to your website
+## Adding the tracking script to your website
 
 In order for us to track visits (clicks) referred by your affiliates, you'll need to add our script to your website.
 
-> Depending on your payment processor, you can either manually add it or install a plugin (e.g. WordPress).
+<Note>Depending on your payment processor, you can either manually inject it or install a plugin that does it for you (for example, our WooCommerce plugin).</Note>
 
 If you're reading this, chances are, you're going for a custom integration. Add the Afficone script to your page and make sure to replace `[YOUR_SITE_TOKEN]` with your portal's token:
 
@@ -22,16 +22,22 @@ If you're reading this, chances are, you're going for a custom integration. Add 
 
 A good way to check if everything went smooth is opening Chrome Developer Tools and searching for your portal's token.
 
-> You can open Chrome Developer Tools with `CTRL + SHIFT + I`
+<Tip>You can open Chrome Developer Tools with `CTRL + SHIFT + I`</Tip>
 
-If everything's working, the script tag should look like this:
+If everything is working as intended, the `<script>` tag should look like this:
 
-![](/images/installation/html-check-footer.png)
+```html
+<script src="https://afficone.com/scripts/sdk.js?token=5102002150667984" [..any other attributes]></script>
+```
 
 or possibly like this:
 
-![](/images/installation/html-check.png)
+```html
+<link rel="preload" src="https://afficone.com/scripts/sdk.js?token=5617765752175647" as="script">
+```
 
 What's important is that the script URL stays intact with the token being at the end of it.
 
-> Please note that you have to make sure the script is on **all of your important pages**. If you have it on your landing page, but not on your billing page, we will not be able to track orders for some integrations.
+<Warning>
+    Please note that you have to make sure the script is on **all of your important pages**. If you have it on your landing page, but not on your billing page, we will not be able to track orders for some integrations.
+</Warning>

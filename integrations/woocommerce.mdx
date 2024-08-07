@@ -1,0 +1,36 @@
+---
+icon: cart-shopping
+title: 'WooCommerce Integration'
+description: 'Integrate your WooCommerce store to Afficone'
+---
+
+After signing up and selecting WooCommerce as your payment provider, you need to do a few things before you can start using Afficone.
+
+1. ## Install our tracking plugin on your website
+<Card title="Download Plugin" icon="download" href="https://afficone.com/plugins/afficone-wordpress.zip">
+    Current version: 1.3.3
+</Card>
+
+In order to track and attribute orders properly, you'll need to install the Afficone plugin to your 
+WordPress website. You can do that by:
+
+1. Going to **Plugins → Add New Plugin**.
+2. Press the **Upload Plugin** button on the top.
+3. Select the plugin `.zip` file and hit **Install Now**.
+
+After installing it, you should make sure there isn't a compatibility error.
+
+2. ## Make sure you don't have any conflicting plugins
+
+It's pretty common for WordPress sites to have plugins that optimize static files like images and javascript scripts. This can cause the Afficone tracking script to not work as intended.
+
+<Tabs>
+    <Tab title="WP Rocket">
+        In order to fix the WP Rocket plugin conflict, Please add `afficone.com` to **File Optimizations** > **JavaScript Files** > **Excluded JavaScript Files**.
+
+        ![WP Rocket settings](/images/integrations/woocommerce/wordpress-wp-rocket.png)
+    </Tab>
+    <Tab title="Other">
+        If the Afficone tracking script isn't working as intended, you can check out our [troubleshooting guide](/installation#troubleshooting).
+    </Tab>
+</Tabs>

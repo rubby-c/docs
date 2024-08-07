@@ -1,0 +1,85 @@
+---
+icon: magnifying-glass
+title: 'Tracking Orders'
+description: 'Manually track an order from an affiliate'
+---
+
+<Card icon="code" title="Install our tracking script" href="/installation">
+  In order to track orders manually, you'll have to install our tracking script on your website.
+</Card>
+
+You can manually track orders with just a few lines of code:
+
+```javascript
+Afficone.conversion({
+    orderId: "123",
+    products: [
+      {
+        name: 'Big Cheese Hamburger',
+        total: 9.99
+      }
+    ]
+});
+```
+
+## Order schema
+
+If you want to include more data to your order, you can check out our full order schema:
+
+```javascript
+{
+    orderId: "123",
+    timestamp: 1704379131,
+    notes: "Extra cheese please.",
+    isRoyalty: false, // ⚠️ Dangerous
+    coupons: ["COUPON123"],
+    commission: 2.00, // ⚠️ Dangerous
+    customer: {
+        name: "Kris D.",
+        phone: "+1 (123) 123-1234",
+        email: "example@gmail.com",
+        ip: "123.123.123.123",
+        country: "The Universe",
+        address: "Planet Earth, Solar System, Milky Way"
+    },
+    products: [
+        {
+            id: "0",
+            name: "Big Cheese Burger",
+            quantity: 1,
+            total: 9.99,
+            subTotal: 8.99,
+            tax: 0
+        }
+    ],
+    metadata: {
+        exclude: "pickles"
+    }
+}
+```
+
+<Accordion icon="code" title="Full order schema" description="Meaning and datatypes for each property.">
+Properties with a `?` datatype are optional.
+
+- **orderId**: `string` - Internal ID of your order.
+- **timestamp**: `int64?` - The unix timestamp of your order.
+- **notes**: `string?` - The user's custom purchase notes.
+- **isRoyalty**: `boolean?` - ⚠️ This should always be `undefined` or `false`, unless you for some reason want to manually award royalties.
+- **coupons**: `string[]?` - The coupon codes used for this order.
+- **commission**: `decimal?` - ⚠️ The commission the affiliate will receive (**this disables automatic commission calculation**).
+- **customer**: `Customer?` - The customer assigned to this order.
+  - **name**: `string?` - The name of the customer.
+  - **phone**: `string?` - The mobile number of the customer.
+  - **email**: `string?` - The email address of the customer.
+  - **ip**: `string?` - The IP address of the customer.
+  - **country**: `string?` - The country of the customer.
+  - **address**: `string?` - The address of the customer.
+- **products**: `Product[]` - List of purchased products.
+  - **id**: `number` - Internal product id.
+  - **name**: `string` - Name of the purchased product.
+  - **quantity**: `int32` - Quantity of the purchased product.
+  - **total**: `decimal` - Total amount paid for the product (incl. discounts & taxes).
+  - **subTotal**: `decimal` - Subtotal amount (the product price excl. discounts & taxes).
+  - **tax**: `decimal` - Tax on this order.
+  - **metadata**: `object` - Additional metadata - you can add anything here as long as its valid JSON.
+</Accordion>

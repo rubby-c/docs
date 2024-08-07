@@ -1,0 +1,101 @@
+---
+icon: stripe-s
+title: 'Stripe Integration'
+description: 'Integrate your Stripe account to Afficone'
+---
+
+After signing up and selecting Stripe as your payment provider, you need to do a few things before you can start using Afficone.
+
+1. ## Connect your Stripe Account
+
+After signing up selecting Stripe as your payment provider, click the Connect with Stripe button. This will lead you to a Stripe-hosted page where you can select the Stripe Account you want to use for this integration.
+
+<Note>In order to track your orders and subscriptions as well as handle refunds, Afficone will receive a few [webhook events](https://docs.stripe.com/webhooks) when something happens on your Stripe account. More specifically [charge.refunded](https://docs.stripe.com/api/events/types#event_types-charge.refunded), [invoice.paid](https://docs.stripe.com/api/events/types#event_types-invoice.paid) and [checkout.session.completed](https://docs.stripe.com/api/events/types#event_types-checkout.session.completed).</Note>
+
+2. ## Install our tracking script on your website
+
+In order to track affiliate clicks, you have to add our **&lt;script&gt;** tag to all of your website's pages.
+
+> For example, if you have a landing page at **example.com**, but your billing page is at **app.example.com**, you have to add the script to both of these pages.
+
+<Card title="Installation" icon="paintbrush" href="/installation">
+    Add the Afficone tracking script to your website.
+</Card>
+
+3. ## Integrate your Stripe's payment system
+
+Depending on how you handle payments on your side, you might have to add some additional code on your backend.
+
+<Tabs>
+    <Tab title="Client Checkout">
+        If you're using client-based Stripe checkouts, you have to add the `clientReferenceId` property to your checkout configuration.
+
+        ```javascript
+        <script src="https://js.stripe.com/v3/"></script>
+
+        stripe.redirectToCheckout({
+            success_url: 'https://example.com/success',
+            mode: 'payment' | 'setup' | 'subscription',
+            line_items: [
+                // The items being purchased
+            ],
+            clientReferenceId: window.Afficone.referral ?? null
+        });
+        ```
+    </Tab>
+    <Tab title="Server Checkout">
+        On the client, the affiliate's coupon code is stored in the `window.Afficone.referral` property.
+
+        ```javascript
+        const stripe = require('stripe')('YOUR_API_KEY');
+
+        const session = await stripe.checkout.sessions.create({
+            success_url: 'https://example.com/success',
+            mode: 'payment' | 'setup' | 'subscription',
+            line_items: [
+                // The items being purchased
+            ],
+            customer_creation: "always" // Required to be "always"
+            clientReferenceId: "[AFFILIATE_COUPON]" // Pass this from the browser
+        });
+
+        const url = session.url;
+        ```
+    </Tab>
+    <Tab title="Payment Links">
+        When creating a payment link, make sure to check **Save payment details for future use**.
+        <Note>If you're creating it via API, set `customer_creation: "always"`</Note>
+
+        ![Payment Links setup](/images/integrations/stripe/payment-links-setup.png)
+
+        The Afficone SDK will automatically insert the `client_reference_id` parameter in all `<a>` elements containing a payment link.
+    </Tab>
+    <Tab title="Buy Buttons">
+        When creating a buy button, make sure to check **Save payment details for future use**.
+        <Note>If you're creating it via API, set `customer_creation: "always"`</Note>
+
+        ![Payment Links setup](/images/integrations/stripe/payment-links-setup.png)
+
+        The Afficone SDK will automatically insert the `client_reference_id` parameter in all `<stripe-buy-button>` elements.
+    </Tab>
+</Tabs>
+
+## Offering free trials?
+
+If you're creating Stripe customers via API (that's usually the case when offering a free trial), you have to set some customer metadata manually.
+
+This is done by specifying an `_afficoneRef` property in the customer metadata.
+
+```javascript
+const stripe = require('stripe')('[Your API key]');
+
+const customer = await stripe.customers.create({
+   metadata: {
+       _afficoneRef: '[Referral Code]',
+   }
+});
+```
+
+<Tip>
+You can pass the referral code from the browser with your API call - a good example is during registration.
+</Tip>

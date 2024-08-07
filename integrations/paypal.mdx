@@ -1,0 +1,57 @@
+---
+icon: paypal
+title: 'PayPal Integration'
+description: 'Integrate your PayPal account to Afficone'
+---
+
+<Warning>
+For this integration, you need a [PayPal business](https://www.paypal.com/en/business) account!
+</Warning>
+
+1. ## Create a PayPal developer app
+
+Head to [PayPal Developers](https://developer.paypal.com/dashboard/applications/live) and create an app (the name doesn't matter).
+
+![Create PayPal app](/images/integrations/paypal/paypal-step1.png)
+
+<Note>
+    After creating the app, make sure to check the following permissions:
+    - **Payouts**
+    - **Customer disputes**
+    - **Transaction search**
+</Note>
+
+2. ## Find your app's client Id and secret
+
+Afficone needs these to access to attribute your new sales to the appropriate affilites.
+
+![PayPal app client Id and secret](/images/integrations/paypal/paypal-step2.png)
+
+3. ## Attach the referral code to your PayPal button
+
+Since we can't do that automatically, you'll have to edit some of your website's code.
+
+```javascript
+paypal.Buttons({
+    // ... other properties
+    createOrder: function (data, actions) {
+        return actions.order.create({
+            // ... other properties
+            purchase_units: [{
+                // ... other properties
+                custom_id: window.Afficone.referral
+            }]
+        });
+    },
+}).render("#YOUR-PAYPAL-BUTTON-ID");
+```
+
+If you're using a plugin or not using PayPal buttons, you can search for the equivalent of `custom_id` for your type of integration.
+
+<Note>
+PayPal's developer documentation is kind of a mess. They have a bunch of ways you can pay somebody, that are completely incompatible with eachother.
+
+The most common way is [PayPal buttons](https://developer.paypal.com/sdk/js/reference/#link-paypalbuttonsoptions) (that's what we support).
+
+If you use something else, you can contact us at contact@afficone.com and we could try to include it in our PayPal integration and this documentation.
+</Note>

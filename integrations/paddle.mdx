@@ -1,0 +1,57 @@
+---
+icon: p
+title: 'Paddle Integration'
+description: 'Integrate your Paddle account to Afficone'
+---
+
+After signing up and selecting Paddle as your payment provider, you need to do a few things before you can start using Afficone.
+
+1. ## Install our tracking script on your website
+
+In order to track affiliate clicks, you have to add our **&lt;script&gt;** tag to all of your website's pages.
+
+> For example, if you have a landing page at **example.com**, but your billing page is at **app.example.com**, you have to add the script to both of these pages.
+
+<Card title="Installation" icon="paintbrush" href="/installation">
+    Add the Afficone tracking script to your website.
+</Card>
+
+2. ## Create a Paddle webhook
+
+Afficone needs to use a Paddle webhook to track your sales, subscriptions and refunds.
+
+<Tip>
+    You can find this menu in **Developer Tools** > **Notifications** > **New Destination**.
+</Tip>
+
+The webhook URL has to be `https://api.afficone.com/hooks/paddle/[Your-Portal-Token]`. You'll receive a unique portal token once you sign up and choose your payment provider.
+
+![Paddle Webhooks](/images/integrations/paddle/paddle-webhook.webp)
+
+<Note>
+    Make sure to check the following events:
+    - **transaction.completed**
+    - **adjustment.created**
+    - **adjustment.updated**
+</Note>
+
+Once you're done, pass the webhook secret to our setup so we can that verify webhooks are really coming from your Paddle account.
+
+<Note>
+    Our tracking script handles all Paddle integrations for you. Just make sure it's placed on all your important pages, including landing page.
+</Note>
+
+<Accordion title="Using the Paddle API to create transactions?">
+    You can pass `window.Afficone.referral` from your frontend to backend and attach a custom data property (it has to be named `_afficoneRef`) containing the referral code.
+
+    ```javascript
+    {   
+        //...
+        "custom_data": {
+            "_afficoneRef": "(value)"
+        }
+    }
+    ```
+
+    More information here: https://developer.paddle.com/api-reference/about/custom-data
+</Accordion>
