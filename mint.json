@@ -5,7 +5,7 @@
     "dark": "https://afficone.com/_next/image?url=%2Flogo-name.png&w=128&q=100",
     "light": "https://afficone.com/_next/image?url=%2Flogo-name-dark.png&w=128&q=100"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "https://afficone.com/favicon.ico",
   "colors": {
     "primary": "#2463eb",
     "light": "#60a5fa",
