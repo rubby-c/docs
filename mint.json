@@ -1,87 +1,152 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Afficone Documentation",
-  "logo": {
-    "dark": "https://afficone.com/_next/image?url=%2Flogo-name.png&w=128&q=100",
-    "light": "https://afficone.com/_next/image?url=%2Flogo-name-dark.png&w=128&q=100"
-  },
-  "favicon": "https://afficone.com/favicon.ico",
-  "colors": {
-    "primary": "#2463eb",
-    "light": "#60a5fa",
-    "dark": "#2463eb",
-    "anchors": {
-      "from": "#2463eb",
-      "to": "#60a5fa"
-    }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:contact@afficone.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Start your affiliate program",
-    "url": "https://afficone.com"
-  },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Home",
-      "icon": "book-open-cover",
-      "url": "https://afficone.com"
+    "$schema": "https://mintlify.com/schema.json",
+    "name": "Afficone Documentation",
+    "logo": {
+        "dark": "https://afficone.com/_next/image?url=%2Flogo-name.png&w=128&q=100",
+        "light": "https://afficone.com/_next/image?url=%2Flogo-name-dark.png&w=128&q=100"
     },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://afficone.com/blog"
+    "favicon": "/favicon.png",
+    "colors": {
+        "primary": "#2463eb",
+        "light": "#60a5fa",
+        "dark": "#2463eb",
+        "anchors": {
+            "from": "#2463eb",
+            "to": "#60a5fa"
+        }
+    },
+    "topbarLinks": [
+        {
+            "name": "Support",
+            "url": "mailto:contact@afficone.com"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Get Started",
+        "url": "https://afficone.com"
+    },
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "api-reference"
+        }
+    ],
+    "anchors": [
+        {
+            "name": "Dashboard",
+            "icon": "book-open-cover",
+            "url": "https://afficone.com/dashboard"
+        },
+        {
+            "name": "Blog",
+            "icon": "newspaper",
+            "url": "https://afficone.com/blog"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Getting Started",
+            "pages": [
+                "installation",
+                "quickstart"
+            ]
+        },
+        {
+            "group": "Integrations",
+            "pages": [
+                "essentials/markdown",
+                "essentials/code",
+                "essentials/images",
+                "essentials/settings",
+                "essentials/navigation",
+                "essentials/reusable-snippets"
+            ]
+        },
+        {
+            "group": "Essentials",
+            "pages": [
+                "essentials/markdown",
+                "essentials/code",
+                "essentials/images",
+                "essentials/settings",
+                "essentials/navigation",
+                "essentials/reusable-snippets"
+            ]
+        },
+        {
+            "group": "Quickstart",
+            "pages": [
+                "api-reference/authentication"
+            ]
+        },
+        {
+            "group": "Affiliates",
+            "pages": [
+                "api-reference/affiliates/list-affiliates",
+                "api-reference/affiliates/get-affiliates",
+                "api-reference/affiliates/get-affiliates-jwt",
+                "api-reference/affiliates/post-affiliates",
+                "api-reference/affiliates/post-affiliates-invite",
+                "api-reference/affiliates/delete-affiliates",
+                "api-reference/affiliates/patch-affiliates-approve",
+                "api-reference/affiliates/patch-affiliates-commissions",
+                "api-reference/affiliates/patch-affiliates-coupon"
+            ]
+        },
+        {
+            "group": "Emails",
+            "pages": [
+                "api-reference/emails/list-emails",
+                "api-reference/emails/get-emails",
+                "api-reference/emails/post-emails",
+                "api-reference/emails/post-emails-custom"
+            ]
+        },
+        {
+            "group": "Payouts",
+            "pages": [
+                "api-reference/payouts/list-payouts",
+                "api-reference/payouts/get-payouts",
+                "api-reference/payouts/post-payouts",
+                "api-reference/payouts/delete-payouts",
+                "api-reference/payouts/patch-payouts"
+            ]
+        },
+        {
+            "group": "Public",
+            "pages": [
+                "api-reference/public/list-programs",
+                "api-reference/public/token-to-id",
+                "api-reference/public/portal"
+            ]
+        }
+    ],
+    "footerSocials": {
+        "linkedin": "https://www.linkedin.com/company/afficone"
+    },
+    "feedback": {
+        "thumbsRating": true
+    },
+    "api": {
+        "baseUrl": "https://api.afficone.com",
+        "auth": {
+            "method": "key",
+            "name": "X-Affi-Key"
+        }
+    },
+    "analytics": {
+        "plausible": {
+            "domain": "plausible.afficone.com"
+        }
+    },
+    "background": {
+        "style": "gradient"
+    },
+    "layout": "topnav",
+    "versions": [
+        "v1"
+    ],
+    "primaryTab": {
+        "name": "Documentation"
     }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "linkedin": "https://www.linkedin.com/company/afficone"
-  },
-  "feedback": {
-    "thumbsRating": true
-  }
 }
