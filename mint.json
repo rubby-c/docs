@@ -80,5 +80,8 @@
   ],
   "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/afficone"
+  },
+  "feedback": {
+    "thumbsRating": true
   }
 }
