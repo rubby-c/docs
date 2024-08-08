@@ -37,11 +37,6 @@
     ],
     "anchors": [
         {
-            "name": "Dashboard",
-            "icon": "book-open-cover",
-            "url": "https://afficone.com/dashboard"
-        },
-        {
             "name": "Blog",
             "icon": "newspaper",
             "url": "https://afficone.com/blog"
@@ -49,10 +44,16 @@
     ],
     "navigation": [
         {
+            "group": "Main",
+            "pages": [
+                "main/roadmap"
+            ]
+        },
+        {
             "group": "Getting Started",
             "pages": [
-                "installation",
-                "tracking-orders"
+                "getting-started/installation",
+                "getting-started/tracking-orders"
             ]
         },
         {
