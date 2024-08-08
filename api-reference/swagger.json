@@ -10,6 +10,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "ListAffiliates",
         "parameters": [
           {
             "name": "limit",
@@ -42,6 +43,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "GetAffiliate",
         "parameters": [
           {
             "name": "email",
@@ -68,6 +70,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "CreateAffiliate",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -102,6 +105,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "DeleteAffiliate",
         "parameters": [
           {
             "name": "id",
@@ -123,6 +127,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "InviteAffiliate",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -159,6 +164,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "SetApproval",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -195,6 +201,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "UpdateCommissions",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -231,6 +238,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "UpdateCoupon",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -267,6 +275,7 @@
         "tags": [
           "Affiliates"
         ],
+        "operationId": "GetAffiliateJwt",
         "parameters": [
           {
             "name": "email",
@@ -295,6 +304,7 @@
         "tags": [
           "Base"
         ],
+        "operationId": "HelloWorld",
         "responses": {
           "200": {
             "description": "OK"
@@ -307,6 +317,7 @@
         "tags": [
           "Emails"
         ],
+        "operationId": "ListTemplates",
         "parameters": [
           {
             "name": "limit",
@@ -339,6 +350,7 @@
         "tags": [
           "Emails"
         ],
+        "operationId": "GetTemplate",
         "parameters": [
           {
             "name": "id",
@@ -358,6 +370,7 @@
         "tags": [
           "Emails"
         ],
+        "operationId": "SendEmail",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -394,6 +407,7 @@
         "tags": [
           "Emails"
         ],
+        "operationId": "CreateCustomTemplate",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -430,6 +444,7 @@
         "tags": [
           "Payouts"
         ],
+        "operationId": "ListPayouts",
         "parameters": [
           {
             "name": "type",
@@ -476,6 +491,7 @@
         "tags": [
           "Payouts"
         ],
+        "operationId": "GetPayout",
         "parameters": [
           {
             "name": "id",
@@ -495,6 +511,7 @@
         "tags": [
           "Payouts"
         ],
+        "operationId": "PostPayout",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -529,6 +546,7 @@
         "tags": [
           "Payouts"
         ],
+        "operationId": "PatchPayout",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -563,6 +581,7 @@
         "tags": [
           "Payouts"
         ],
+        "operationId": "DeletePayout",
         "parameters": [
           {
             "name": "id",
@@ -584,6 +603,7 @@
         "tags": [
           "Public"
         ],
+        "operationId": "ListPrograms",
         "responses": {
           "200": {
             "description": "OK"
@@ -596,6 +616,7 @@
         "tags": [
           "Public"
         ],
+        "operationId": "TokenToId",
         "parameters": [
           {
             "name": "token",
@@ -617,6 +638,7 @@
         "tags": [
           "Public"
         ],
+        "operationId": "GetPortal",
         "parameters": [
           {
             "name": "token",
@@ -627,6 +649,108 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/track/{token}": {
+      "post": {
+        "tags": [
+          "Track"
+        ],
+        "operationId": "TrackAnyConversion",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/track/{token}/{code}": {
+      "post": {
+        "tags": [
+          "Track"
+        ],
+        "operationId": "TrackConversion",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -780,6 +904,38 @@
         },
         "additionalProperties": false
       },
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the customer.",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "description": "The phone number of the customer.",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the customer.",
+            "nullable": true
+          },
+          "ip": {
+            "type": "string",
+            "description": "The IP address of the customer.",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "The country of the customer.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a customer in the system."
+      },
       "InviteAffiliateForm": {
         "required": [
           "email",
@@ -801,6 +957,79 @@
           }
         },
         "additionalProperties": false
+      },
+      "Order": {
+        "required": [
+          "orderId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The unique identifier for the order."
+          },
+          "paid": {
+            "type": "boolean",
+            "description": "Indicates whether the order has been acknowledged in an affiliate payout."
+          },
+          "timestamp": {
+            "type": "integer",
+            "description": "The timestamp of the order.",
+            "format": "int64",
+            "nullable": true
+          },
+          "isRoyalty": {
+            "type": "boolean",
+            "description": "Indicates whether the order is a royalty order.",
+            "nullable": true
+          },
+          "custom": {
+            "type": "boolean",
+            "description": "Indicates whether the order is custom.",
+            "nullable": true
+          },
+          "commission": {
+            "type": "number",
+            "description": "The commission for the order.",
+            "format": "double",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "description": "Additional notes for the order.",
+            "nullable": true
+          },
+          "coupons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The list of coupon codes applied to the order.",
+            "nullable": true
+          },
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "description": "The list of products in the order.",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Additional metadata for the order.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents an order in the system."
       },
       "PayoutForm": {
         "required": [
@@ -851,6 +1080,46 @@
           }
         },
         "additionalProperties": false
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the product.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the product.",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "The quantity of the product ordered.",
+            "format": "int32",
+            "nullable": true
+          },
+          "total": {
+            "type": "number",
+            "description": "The total price of the product in the order.",
+            "format": "double"
+          },
+          "subTotal": {
+            "type": "number",
+            "description": "The subtotal price of the product before tax.",
+            "format": "double",
+            "nullable": true
+          },
+          "tax": {
+            "type": "number",
+            "description": "The tax amount for the product.",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Represents a product in an order."
       },
       "SendTemplatePost": {
         "required": [

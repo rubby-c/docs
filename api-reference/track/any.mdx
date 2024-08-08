@@ -1,0 +1,11 @@
+---
+title: Create order
+description: "We'll try to match the referral from the order's coupons"
+openapi: post /v1/track/{token}
+---
+
+This endpoint **isn't recommended**, but we're leaving it as an option.
+
+<Warning>
+    With this endpoint, we can only match the referral by the coupons you have set in the `coupons` property. If you want a more reliable experience, you should use the [other endpoint](/api-reference/track/code) instead.
+</Warning>

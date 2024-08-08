@@ -81,6 +81,13 @@
             ]
         },
         {
+            "group": "Orders",
+            "pages": [
+                "api-reference/track/any",
+                "api-reference/track/code"
+            ]
+        },
+        {
             "group": "Affiliates",
             "pages": [
                 "api-reference/affiliates/list-affiliates",
