@@ -44,16 +44,16 @@
     ],
     "navigation": [
         {
-            "group": "Main",
-            "pages": [
-                "main/roadmap"
-            ]
-        },
-        {
             "group": "Getting Started",
             "pages": [
                 "getting-started/installation",
                 "getting-started/tracking-orders"
+            ]
+        },
+        {
+            "group": "Main",
+            "pages": [
+                "main/roadmap"
             ]
         },
         {
