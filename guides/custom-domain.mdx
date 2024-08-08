@@ -1,0 +1,27 @@
+---
+icon: server
+title: Custom Domain & SMTP
+description: Set up your affiliate portal to use your custom domain
+---
+
+## Linking your custom domain
+
+You can [link your domain](https://afficone.com/dashboard/website) by adding a CNAME DNS record to your domain DNS configuration.
+
+![Custom domain setup](/images/guides/custom-domain.png)
+
+It has to point to your affiliate portal's URL (which is usually `[prefix].afficone.com`).
+
+Once you've added the DNS record, press on the **Announce** button and wait a little till your DNS records are updated. When that's done, click on **Check Validity and Apply** to start using your subdomain.
+
+## Linking your SMTP server
+
+You can also [link your own SMTP server](https://afficone.com/dashboard/emails) in order to use your domain for affiliate emails.
+
+<Warning>
+If you're using Gmail, make sure to use an [app password](https://myaccount.google.com/apppasswords) instead of your password. This requires 2 factor authentication.
+</Warning>
+
+![Custom SMTP](/images/guides/custom-smtp.png)
+
+<Tip>Both TLS and SSL connections are supported.</Tip>

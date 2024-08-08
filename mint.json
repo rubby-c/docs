@@ -27,6 +27,10 @@
     },
     "tabs": [
         {
+            "name": "User Guides",
+            "url": "guides"
+        },
+        {
             "name": "API Reference",
             "url": "api-reference"
         }
@@ -59,6 +63,14 @@
                 "integrations/woocommerce",
                 "integrations/shopify",
                 "integrations/paypal"
+            ]
+        },
+        {
+            "group": "Guides",
+            "pages": [
+                "guides/create-affiliate-program",
+                "guides/managing-affiliates",
+                "guides/custom-domain"
             ]
         },
         {
