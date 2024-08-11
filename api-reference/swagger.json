@@ -270,6 +270,43 @@
         }
       }
     },
+    "/v1/affiliates/group": {
+      "patch": {
+        "tags": [
+          "Affiliates"
+        ],
+        "operationId": "SetGroup",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAffiliateGroupForm"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAffiliateGroupForm"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAffiliateGroupForm"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAffiliateGroupForm"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/v1/affiliates/jwt": {
       "get": {
         "tags": [
@@ -656,15 +693,52 @@
         }
       }
     },
-    "/v1/track/{token}": {
+    "/v1/track": {
       "post": {
         "tags": [
           "Track"
         ],
         "operationId": "TrackAnyConversion",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/track/{code}": {
+      "post": {
+        "tags": [
+          "Track"
+        ],
+        "operationId": "TrackConversion",
         "parameters": [
           {
-            "name": "token",
+            "name": "code",
             "in": "path",
             "required": true,
             "schema": {
@@ -703,23 +777,15 @@
         }
       }
     },
-    "/v1/track/{token}/{code}": {
-      "post": {
+    "/v1/zapier/unsubscribe/{type}": {
+      "delete": {
         "tags": [
-          "Track"
+          "Zapier"
         ],
-        "operationId": "TrackConversion",
+        "operationId": "Unsubscribe",
         "parameters": [
           {
-            "name": "token",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "code",
+            "name": "type",
             "in": "path",
             "required": true,
             "schema": {
@@ -727,30 +793,6 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Order"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Order"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Order"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Order"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1137,6 +1179,24 @@
             "items": {
               "type": "string"
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SetAffiliateGroupForm": {
+        "required": [
+          "affiliateId",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "affiliateId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false

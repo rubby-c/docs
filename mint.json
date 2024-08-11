@@ -95,10 +95,11 @@
                 "api-reference/affiliates/get-affiliates-jwt",
                 "api-reference/affiliates/post-affiliates",
                 "api-reference/affiliates/post-affiliates-invite",
-                "api-reference/affiliates/delete-affiliates",
                 "api-reference/affiliates/patch-affiliates-approve",
                 "api-reference/affiliates/patch-affiliates-commissions",
-                "api-reference/affiliates/patch-affiliates-coupon"
+                "api-reference/affiliates/patch-affiliates-coupon",
+                "api-reference/affiliates/patch-affiliates-group",
+                "api-reference/affiliates/delete-affiliates"
             ]
         },
         {
