@@ -1186,7 +1186,7 @@
       "SetAffiliateGroupForm": {
         "required": [
           "affiliateId",
-          "id"
+          "groupId"
         ],
         "type": "object",
         "properties": {
@@ -1194,7 +1194,7 @@
             "minLength": 1,
             "type": "string"
           },
-          "id": {
+          "groupId": {
             "minLength": 1,
             "type": "string"
           }
