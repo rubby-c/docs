@@ -122,43 +122,6 @@
         }
       }
     },
-    "/v1/affiliates/invite": {
-      "post": {
-        "tags": [
-          "Affiliates"
-        ],
-        "operationId": "InviteAffiliate",
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InviteAffiliateForm"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InviteAffiliateForm"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InviteAffiliateForm"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InviteAffiliateForm"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/v1/affiliates/approve": {
       "patch": {
         "tags": [
