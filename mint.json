@@ -107,7 +107,7 @@
             "pages": [
                 "api-reference/emails/list-emails",
                 "api-reference/emails/get-emails",
-                "api-reference/emails/post-emails",
+                "api-reference/emails/post-emails-send",
                 "api-reference/emails/post-emails-custom"
             ]
         },
