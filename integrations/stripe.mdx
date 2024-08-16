@@ -84,7 +84,7 @@ Depending on how you handle payments on your side, you might have to add some ad
 
 If you're creating Stripe customers via API (that's usually the case when offering a free trial), you have to set some customer metadata manually.
 
-This is done by specifying an `_afficoneRef` property in the customer metadata.
+This is done by specifying an `_afficoneRef` property in the metadata object when creating a customer:
 
 ```javascript
 const stripe = require('stripe')('[Your API key]');
@@ -97,5 +97,5 @@ const customer = await stripe.customers.create({
 ```
 
 <Tip>
-You can pass the referral code from the browser with your API call - a good example is during registration.
+You can pass the referral code from the browser to your backend - it's located in `window.Afficone.referral`.
 </Tip>
