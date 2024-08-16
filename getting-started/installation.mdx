@@ -36,7 +36,13 @@ or possibly like this:
 <link rel="preload" src="https://afficone.com/scripts/sdk.js?token=5617765752175647" as="script">
 ```
 
+<Note>
 What's important is that the script URL stays intact with the token being at the end of it.
+</Note>
+
+Another way to check is by opening your browser console and typing `window.Afficone.affiData`. This should show you information about your portal.
+
+![](/images/guides/script-js-check.png)
 
 <Warning>
     Please note that you have to make sure the script is on **all of your important pages**. If you have it on your landing page, but not on your billing page, we will not be able to track orders for some integrations.
