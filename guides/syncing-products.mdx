@@ -1,0 +1,38 @@
+---
+icon: bag-shopping
+title: Syncing your products
+description: You can sync your products to Afficone in order to set 
+---
+
+<Tip>
+This feature is available for Stripe, Shopify and WooCommerce.
+</Tip>
+
+## Syncing your products to Afficone
+
+You can set individual commission rates for your different products.
+
+<Note>
+For example, affiliates can receive 15% commission from selling **Product A** and 20% from selling **Product B**.
+</Note>
+
+We use the first available rate in this order:
+- Product-specific rates (if set)
+- Affiliate group rates (if set)
+- Individual affiliate rates
+
+![Products list](/images/guides/products.png)
+
+<Warning>
+Note: We don't automatically sync newly created products.
+</Warning>
+
+## Adding a product manually
+
+If you wish, you can also add a product manually. All you have to do is specify the internal ID, product name and your desired commission rates.
+
+![Add new product](/images/guides/add-new-product.png)
+
+<Warning>
+Make sure that the product id matches your product id internally. We check every order that's received on our end and try to find a product with a matching id.
+</Warning>

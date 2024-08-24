@@ -70,7 +70,8 @@
             "group": "Guides",
             "pages": [
                 "guides/create-affiliate-program",
-                "guides/managing-affiliates",
+                "guides/syncing-products",
+                "guides/affiliate-payouts",
                 "guides/custom-domain"
             ]
         },
