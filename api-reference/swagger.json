@@ -656,6 +656,19 @@
         }
       }
     },
+    "/v1/public/stats": {
+      "get": {
+        "tags": [
+          "Public"
+        ],
+        "operationId": "GetStats",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/v1/track": {
       "post": {
         "tags": [
@@ -703,6 +716,7 @@
           {
             "name": "code",
             "in": "path",
+            "description": "The referral code of the affiliate.",
             "required": true,
             "schema": {
               "type": "string"
@@ -710,6 +724,7 @@
           }
         ],
         "requestBody": {
+          "description": "The order object.",
           "content": {
             "application/json-patch+json": {
               "schema": {
@@ -729,6 +744,53 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/zapier/subscribe/{type}": {
+      "post": {
+        "tags": [
+          "Zapier"
+        ],
+        "operationId": "Subscribe",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscribePost"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscribePost"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscribePost"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscribePost"
               }
             }
           }
@@ -941,31 +1003,10 @@
         "additionalProperties": false,
         "description": "Represents a customer in the system."
       },
-      "InviteAffiliateForm": {
-        "required": [
-          "email",
-          "templateId"
-        ],
-        "type": "object",
-        "properties": {
-          "templateId": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "email": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Order": {
         "required": [
-          "orderId"
+          "orderId",
+          "products"
         ],
         "type": "object",
         "properties": {
@@ -980,7 +1021,7 @@
           },
           "timestamp": {
             "type": "integer",
-            "description": "The timestamp of the order.",
+            "description": "The timestamp of the order (in milliseconds).",
             "format": "int64",
             "nullable": true
           },
@@ -1021,8 +1062,7 @@
             "items": {
               "$ref": "#/components/schemas/Product"
             },
-            "description": "The list of products in the order.",
-            "nullable": true
+            "description": "The list of products in the order."
           },
           "metadata": {
             "type": "object",
@@ -1087,6 +1127,9 @@
         "additionalProperties": false
       },
       "Product": {
+        "required": [
+          "total"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1160,6 +1203,16 @@
           "groupId": {
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscribePost": {
+        "type": "object",
+        "properties": {
+          "hookUrl": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
