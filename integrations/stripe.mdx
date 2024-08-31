@@ -47,8 +47,9 @@ Depending on how you handle payments on your side, you might have to add some ad
         });
         ```
     </Tab>
+
     <Tab title="Server Checkout">
-        On the client, the affiliate's coupon code is stored in the `window.Afficone.referral` property.
+        On the client, the affiliate's referral code is stored in the `window.Afficone.referral` property.
 
         ```javascript
         const stripe = require('stripe')('YOUR_API_KEY');
@@ -60,27 +61,49 @@ Depending on how you handle payments on your side, you might have to add some ad
                 // The items being purchased
             ],
             customer_creation: "always" // Required to be "always"
-            clientReferenceId: "[AFFILIATE_COUPON]" // Pass this from the browser
+            clientReferenceId: "[REFERRAL_CODE]" // Pass this from the browser
         });
-
-        const url = session.url;
         ```
     </Tab>
+
+    <Tab title="Payment Intents">
+        <Warning>
+        This is a very specific use-case. If you're using Stripe checkout or Stripe invoices, you don't have to use this approach.
+        </Warning>
+
+        On the client, the affiliate's referral code is stored in the `window.Afficone.referral` property.
+
+        ```javascript
+        const stripe = require('stripe')('YOUR_API_KEY');
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: 20,
+            currency: 'usd',
+            automatic_payment_methods: {
+                enabled: true
+            },
+            metadata: {
+                _afficoneRef: "[REFERRAL_CODE]" // Pass this from the browser
+            }
+        });
+        ```
+    </Tab>
+
     <Tab title="Payment Links">
         When creating a payment link, make sure to check **Save payment details for future use**.
         <Note>If you're creating it via API, set `customer_creation: "always"`</Note>
 
         ![Payment Links setup](/images/integrations/stripe/payment-links-setup.png)
 
-        The Afficone SDK will automatically insert the `client_reference_id` parameter in all `<a>` elements containing a payment link.
+        The Afficone tracking script will automatically insert the `client_reference_id` parameter in all `<a>` elements containing a payment link.
     </Tab>
+    
     <Tab title="Buy Buttons">
         When creating a buy button, make sure to check **Save payment details for future use**.
         <Note>If you're creating it via API, set `customer_creation: "always"`</Note>
 
         ![Payment Links setup](/images/integrations/stripe/payment-links-setup.png)
 
-        The Afficone SDK will automatically insert the `client_reference_id` parameter in all `<stripe-buy-button>` elements.
+        The Afficone tracking script will automatically insert the `client_reference_id` parameter in all `<stripe-buy-button>` elements.
     </Tab>
 </Tabs>
 
