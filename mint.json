@@ -2,8 +2,8 @@
     "$schema": "https://mintlify.com/schema.json",
     "name": "Afficone Documentation",
     "logo": {
-        "dark": "https://afficone.com/_next/image?url=%2Flogo-name.png&w=128&q=100",
-        "light": "https://afficone.com/_next/image?url=%2Flogo-name-dark.png&w=128&q=100"
+        "dark": "https://afficone.com/logo-name.png",
+        "light": "https://afficone.com/logo-name-dark.png"
     },
     "favicon": "/favicon.png",
     "colors": {
